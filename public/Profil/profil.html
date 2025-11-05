@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="profil.css">
+        <title>JuniHelp - Modifier son profil</title>
+        <link rel="icon" href="SmallLogo.png" type="image/png" sizes="128x128">
+    </head>
+    <body>
+        <!-- <h1>Modifier son profil</h1> -->
+        <div id="Contenu">
+            <div id="profileContainer">
+                <img id="profilePic" src="../PPs/defaultPP.jpg" alt="Photo de profil"/>
+                <div id="profileOverlay">+</div>
+            </div>  
+            <input type ="file" id="chooseProfilePic" accept="image/*" style="display:none;"></input>
+            <input type="text" id="prenom" placeholder="Prénom"></input>
+            <input type="text" id="nom" placeholder="Nom"></input>
+            <button id = "modifierMDP">Modifier le mot de passe</button>
+            <input type="password" id="ancienMDP" placeholder="Ancien Mot de Passe" style="display:none;"></input>
+            <input type="password" id="nouveauMDP" placeholder="Nouveau Mot de Passe" style="display:none;"></input>
+            <button id="validerMDP" style="display:none">Valider le mot de passe</button>
+            <select id="promo" aria-placeholder="Promo"></select>
+            <button id = "enregistrer">Enregistrer</button>
+        </div>
+        <script>
+        const IDUser = localStorage.getItem("IDUser");
+        if (IDUser) {
+            fetch(`/get-user-info/${IDUser}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.prenom){
+                    document.getElementById("prenom").value = data.prenom;
+                }
+                if (data.nom){
+                    document.getElementById("nom").value = data.nom;
+                }
+                if (data.ProfilePic && data.ProfilePic !== "None") {
+                    document.getElementById("profilePic").src = `../PPs/${data.ProfilePic}`;
+                } else {
+                    document.getElementById("profilePic").src = '../PPs/defaultPP.jpg';
+                }
+                fetch('/get-all-promos')
+                .then(res => res.json())
+                .then(promosData => {
+                    const selectPromo = document.getElementById("promo");
+                    promosData.rows.forEach(promo => {
+                        const option = document.createElement("option");
+                        option.value = promo.PromoID;
+                        option.textContent = promo.promo;
+                        selectPromo.appendChild(option);
+                    });
+                    // On sélectionne la promo de l'user
+                    if (data.PromoID !== undefined && data.PromoID !== null){
+                        selectPromo.value = data.PromoID;
+                    }
+                });
+            });
+        }
+        </script>
+        <script src="profilJS.js">
+        </script>
+    </body>
+    
+</html>

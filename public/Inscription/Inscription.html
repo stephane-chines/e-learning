@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Inscription.css">
+    <title>Inscription</title>
+    <link rel="icon" href="SmallLogo.png" type="image/png" sizes="128x128">
+</head> 
+<body>
+    <div id="Contenu">
+        <img id="logo" src="Logo.png" alt="Logo">
+        <input type="email" id="email" placeholder="Adresse mail">
+        <input type="password" id="password" placeholder="Mot de passe">
+        <input type="password" id="confirmpassword" placeholder="Confirmer mot de passe">
+        <input type="text" id="prenom" placeholder="Prénom">
+        <input type="text" id="nom" placeholder="Nom">
+        <select id="promo" aria-placeholder="Promo"></select>
+        <div id="aux-links">
+            <a href="#" id="retour">Retour</a>
+        </div>
+        <button id="Inscription">Inscription</button>
+    </div>
+    <script>
+        const selectPromo = document.getElementById("promo");
+        const optiondebase = document.createElement('option');
+        optiondebase.value = null;
+        optiondebase.textContent = "Veuillez sélectionner votre promo";
+        selectPromo.appendChild(optiondebase);
+        fetch('/get-all-promos')
+            .then(res => res.json())
+            .then(promosData => {
+                promosData.rows.forEach(promo => {
+                    const option = document.createElement("option");
+                    option.value = promo.PromoID;
+                    option.textContent = promo.promo;
+                    selectPromo.appendChild(option);
+                });
+            });
+    </script>
+    <script src="Inscription.js"></script>
+</body>
+</html>

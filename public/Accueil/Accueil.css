@@ -1,0 +1,293 @@
+/* Réinitialisation de quelques styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: antiquewhite;
+    overflow: hidden; /* Masque la scrollbar du body */
+}
+
+/* Barre de navigation */
+.navbar {
+    width: 100%;
+    background-color: #3f2a56;
+    color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.navbar h1 {
+    font-size: 1.5em;
+}
+
+.navbar-right {
+    position: relative;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 55px;
+    height: 55px;
+    border: 1px antiquewhite solid;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover{
+    transform: scale(1.05);
+}
+
+/* Contenu du dropdown (caché par défaut) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #f06b42;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px antiquewhite;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+/* Liens du dropdown */
+.dropdown-content a {
+    color: antiquewhite;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #d65027;
+    border-radius: 8px;
+}
+
+/* Afficher le dropdown lors du clic ou sur hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Logo principal */
+.logo-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#logo {
+    max-width: 300px;
+    margin-top: -20px;
+}
+
+/* Barre de recherche */
+.search-container {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    
+}
+
+.search-container input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #3f2a56;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #3f2a56;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-container button {
+    padding: 10px 15px;
+    font-size: 1em;
+    margin-left: 5px;
+    margin-right: 7px;
+    border: none;
+    background-color: #f06b42;
+    color: antiquewhite;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.search-container button:hover {
+    background-color: #d65027;
+    transform: scale(1.05);
+}
+
+
+/* Donne une hauteur maximale pour les matières et active le défilement */
+.gallery-container {
+    max-height: 80vh; 
+    overflow-y: auto;
+    
+    padding-bottom: 12%; /* Pour un peu d'espace en bas */
+}
+
+.gallery-container::-webkit-scrollbar {
+    width: 8px; /* Largeur de la scrollbar */
+}
+
+.gallery-container::-webkit-scrollbar-track {
+    background: transparent; /* Couleur du "rail" */
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+    background-color: #3f2a56; /* Couleur du curseur */
+    border-radius: 10px;
+}
+
+
+.gallery-container {
+    scrollbar-width: thin;
+    scrollbar-color: #3f2a56 transparent;
+}
+
+/* Espace entre le titre du semestre et les photos */
+#semestre1 h2,
+#semestre2 h2 {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.divider {
+    width: 86%;           /* largeur */
+    border: none;         /* suppression du style par défaut */
+    border-top: 4px solid #3f2a56; /* ligne en haut */
+    margin: 20px auto;    /* espacement vertical automatique */
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Style de base pour chaque photo */
+.gallery .photo {
+    cursor: pointer;
+    position: relative;
+    margin: 0.5%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 3px solid #3f2a56;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol d'une photo */
+.gallery .photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Assurer que l'image occupe tout le conteneur */
+.gallery .photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+/* Légère transparence au survol */
+.gallery .photo:hover img {
+    opacity: 0.8;
+}
+
+/* Optionnel : Style pour un texte superposé sur l'image */
+.gallery .photo figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(63, 42, 86, 0.8);
+    color: antiquewhite;
+    text-align: center;
+    padding: 10px;
+    font-size: 80%;
+    pointer-events: none;
+}
+
+.matiere-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 150px;
+    margin-right: 146px;
+}
+
+#Saisie-Matiere {
+    width: 500px; 
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #3f2a56;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);    
+}
+
+#choix-semestre,
+#Saisie-Fichier,
+#choix-promo,
+#Enregistrer {
+    padding: 10px 15px;
+    font-size: 1em;
+    margin-left: 4px;
+    margin-right: 4px;
+    border: none;
+    background-color: #f06b42;
+    color: antiquewhite;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+#Enregistrer:hover,
+#choix-semestre:hover,
+#Saisie-Fichier:hover,
+#choix-promo:hover {
+    background-color: #d65027;
+    transform: scale(1.05);
+}
+
+hr {
+    width: 100%;
+    border-radius: 5px;
+    border-top: 2px solid #3f2a56;
+    margin: 20px 0;
+}
+.supprimer {
+  display: none;
+}
+.supprimer.visible {
+  display: inline-block;
+}

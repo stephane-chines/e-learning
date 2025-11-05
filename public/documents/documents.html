@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="documents.css">
+  <title>JuniHelp</title>
+  <link rel="icon" href="SmallLogo.png" type="image/png" sizes="128x128">
+</head>
+
+<body>
+  <div id="page">
+    <div id="menu">
+      <button id="bouton-menu"><img id="logo" src="Logo.png" alt="Logo"></button>
+      <button id="QR" class="menu">→ Q/R</button>
+      <button id="Chat" class="menu">→ Chat</button>
+      <button id="Documents" class="menu">→ Documents</button>
+      <h2 id="chat-matiere-title"></h2>
+    </div>
+
+
+    <div id="Contenu">
+      <div class="menus-row">
+        <div class="menu-group">
+          <label for="pdf-annales">Annales :</label>
+          <select class="pdf-select" id="pdf-annales" data-type="annales">
+            <option value="">Choisir</option>
+          </select>
+          <button class="ouvrir-pdf" id="ouvrir-annales">Ouvrir</button>
+        </div>
+        <div class="menu-group">
+          <label for="pdf-cours">Cours :</label>
+          <select class="pdf-select" id="pdf-cours" data-type="cours">
+            <option value="">Choisir</option>
+          </select>
+          <button class="ouvrir-pdf" id="ouvrir-cours">Ouvrir</button>
+        </div>
+        <div class="menu-group">
+          <label for="pdf-fiches">Fiches de révision :</label>
+          <select class="pdf-select" id="pdf-fiches" data-type="fiches">
+            <option value="">Choisir</option>
+          </select>
+          <button class="ouvrir-pdf" id="ouvrir-fiches">Ouvrir</button>  </div>
+      </div>
+      <div id="ajout-document">
+        <button id="btn-ajouter">Ajouter un fichier</button>
+        <form id="form-ajout" style="display:none; margin-top:10px;">
+          <input type="text" id="nom-fichier" placeholder="Nom du fichier" required>
+          <select id="categorie-fichier" required>
+            <option value="">Catégorie</option>
+            <option value="annales">Annales</option>
+            <option value="cours">Cours</option>
+            <option value="fiches">Fiches de révision</option>
+          </select>
+          <input type="file" id="fichier-pdf" accept="application/pdf" required>
+          <button type="submit">Ajouter</button>
+        </form>
+      </div>
+      <script src="documents.js"></script>
+</body>
+
+</html>
